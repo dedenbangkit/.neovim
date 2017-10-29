@@ -1,7 +1,7 @@
 ![VIM](https://dnp4pehkvoo6n.cloudfront.net/43c5af597bd5c1a64eb1829f011c208f/as/Ultimate%20Vimrc.svg)
 
-# Thanks for AMIX
-This repository is originaly forked from https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim with some custom modifications.
+## Thanks to AMIX
+This repository is originaly forked from https://github.com/amix/vimrc with some custom modifications.
 
 ## Installing this custom version.
 
