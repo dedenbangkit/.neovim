@@ -1,4 +1,4 @@
-![VIM](https://dnp4pehkvoo6n.cloudfront.net/43c5af597bd5c1a64eb1829f011c208f/as/Ultimate%20Vimrc.svg)
+![VIM](https://jcgerhard.net/user/pages/01.blog/vim-cheats/item.svg)
 
 ## Thanks to AMIX
 This repository is originaly forked from https://github.com/amix/vimrc with some custom modifications.
