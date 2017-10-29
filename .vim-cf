@@ -1,0 +1,58 @@
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+source ~/.vim_runtime/vimrcs/plug.vim
+source ~/.vim_runtime/themes/darkspectrum.vim
+
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim_runtime/plugged')
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Emmet
+Plug 'mattn/emmet-vim'
+" GitHub Plugin
+Plug 'airblade/vim-gitgutter'
+" Initialize plugin system
+call plug#end()
+
+" NerdTree
+let g:NERDTreeWinPos = "left"
+map <C-n> :NERDTreeToggle<CR>
+
+" Emmet
+let g:user_emmet_leader_key='<C-Z>'
+"only enable normal mode functions.
+let g:user_emmet_mode='n'    
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Start gitGutter
+let g:gitgutter_max_signs = 500  " default value
+
+
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
