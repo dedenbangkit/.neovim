@@ -1,7 +1,9 @@
-![VIM](http://ajhager.com/images/ElmVim.png)
 
 ## Thanks to AMIX
+
 This repository is originaly forked from https://github.com/amix/vimrc with some custom modifications.
+
+![VIM](http://ajhager.com/images/ElmVim.png)
 
 ## Installing this custom version.
 
@@ -13,6 +15,7 @@ This will only valid for vim configuration, which is copy the config to .vimrc, 
 	cp ~/.vim_runtime/vim-cf ~/.config/nvim/init.vim
 
 ## Show Shortcut
+
     more information: vs [vim-shortcut], tc [tmux-cheat]
 
 ## How to update to latest version?
@@ -21,6 +24,7 @@ This will only valid for vim configuration, which is copy the config to .vimrc, 
     git pull --rebase
 
 ## How to uninstall
+
 Just do following:
 * Remove `~/.vim_runtime`
 * Remove any lines that reference `.vim_runtime` in your `~/.vimrc`
