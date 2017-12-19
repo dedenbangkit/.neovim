@@ -89,8 +89,8 @@ let g:ctrlp_open_new_file = 'h'
 set splitright
 
 "Cheatseat
-nmap vs :vsp ~/cheatseat/vim-cheat<CR>
-nmap tc :vsp ~/cheatseat/tmux-cheat<CR>
+nmap vs :vsp ~/.vim_runtime/cheatseat/vim-cheat<CR>
+nmap tc :vsp ~/.vim_runtime/cheatseat/tmux-cheat<CR>
 
 " Custom Configuration
 try

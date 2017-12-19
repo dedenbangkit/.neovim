@@ -1,0 +1,62 @@
+   _ _ _ _ _   _       _    _     _   _       _ 
+  |_|_|_|_|_| |_|_   _|_|  |_|   |_| |_|_   _|_|  
+      |_|     |_|_|_|_|_|  |_|   |_|   |_|_|_|    
+      |_|     |_| |_| |_|  |_|   |_|    _|_|_    
+      |_|     |_|     |_|  |_| _ |_|  _|_| |_|_    
+      |_|     |_|     |_|    |_|_|   |_|     |_|  
+
+------------------------------------------------------------------
+## MAIN COMMAND
+------------------------------------------------------------------
+ctrl-b 1 ...      switch to window 1,...
+ctrl-b p          previous window
+ctrl-b n          next window
+ctrl-b x          kill the current pane
+ctrl-b q          display pane numbers for a short while
+ctrl-b l          ‘last’ (previously used) window
+ctrl-b w          choose window from a list
+ctrl-b ,          rename the current window
+ctrl-b &          kill the current window
+------------------------------------------------------------------
+## NEW WINDOW
+------------------------------------------------------------------
+ctrl-b "          split vertically (top/bottom)
+ctrl-b %          split horizontally (left/right)
+------------------------------------------------------------------
+## RESIZE 
+------------------------------------------------------------------
+:resize-pane -D     resize down
+:resize-pane -U     resize upward
+:resize-pane -L     resize left
+:resize-pane -R     resize right
+:resize-pane -D 20  resize down 20
+------------------------------------------------------------------
+## SWITCH WINDOW
+------------------------------------------------------------------
+ctrl-b left       go to the next pane on the left
+ctrl-b right      (or one of these other directions)
+ctrl-b up
+ctrl-b down
+ctrl-b o          go to the next pane (cycle through all of them)
+ctrl-b ;          go to the ‘last’ (previously used) pane
+------------------------------------------------------------------
+## MOVE WINDOW
+------------------------------------------------------------------
+ctrl-b {          move the current pane to the previous position
+ctrl-b }          move the current pane to the next position
+ctrl-b C-o        rotate window ‘up’ (i.e. move all panes)
+ctrl-b M-o        rotate window ‘down’
+ctrl-b !          move the current pane into a new separate
+                  window (‘break pane’)
+                  ctrl-b :move-pane -t :3.2
+                  split window 3's pane 2 and move the current
+                  pane there
+------------------------------------------------------------------
+## LAYOUT
+------------------------------------------------------------------
+ctrl-b M-1        switch to even-horizontal layout
+ctrl-b M-2        switch to even-vertical layout
+ctrl-b M-3        switch to main-horizontal layout
+ctrl-b M-4        switch to main-vertical layout
+ctrl-b M-5        switch to tiled layout
+ctrl-b space      switch to the next layout

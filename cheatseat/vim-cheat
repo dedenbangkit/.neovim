@@ -1,0 +1,115 @@
+  _       _   _   _       _
+ |_|     |_| |_| |_|_   _|_|  
+ |_|     |_| |_| |_|_|_|_|_|
+  |_|   |_|  |_| |_| |_| |_|
+   |_|_|_|   |_| |_|     |_|
+    |_|_|    |_| |_| VIM |_|
+
+------------------------------------------------------------------
+## WINDOW & BUFFER 
+------------------------------------------------------------------
+ctrl+w hjkl     change window
+ZZ              save file
+------------------------------------------------------------------
+## MOVEMENTS
+------------------------------------------------------------------
+ge e            end of word left, right
+{ }             beginning of previous, next pharagraph
+( )             beginning of prefious, next sentence
+0 gm            beginning, middle of line
+^ $             first, last character of line
+ng ngg          line n, default the last, first
+n%              percentage n of the file
+n|              column n of the current line
+%               match of next brace, bracket, comment, #define
+nh nl           line n from start, bottom of window
+M               middle line of window
+------------------------------------------------------------------
+## INSERTION
+------------------------------------------------------------------
+i a             insert before, after cursor
+I A             insert at beginning, end of line
+gl              insert text in first column
+o O             newline below, above current line
+rc              replace character under cursor with c
+grc             like r without affecting layout
+R               replace characters starting at the cursor
+gR              like R without affecting layout
+cm              change text of movement command m
+cc or S         change current line
+C               change to the end of line
+s               change one character and insert
+~               switch case and advance cursor
+g~m             switch case of movement command m
+gum gUm         lowercase, uppercase text of movement m
+<m >m           shift left, right text of movement m
+n<< n>>         shift n lines left, right
+------------------------------------------------------------------
+## DELETION
+------------------------------------------------------------------
+x X             delete character under, before cursor
+dm              delete text of movement command m
+dd D            delete current line, to the end of line
+J gJ            join current line with next, without space
+:rd[return]     delete range r lines
+:rdx[return]    delete range r lines into register x
+------------------------------------------------------------------
+### INSERT MODE 
+------------------------------------------------------------------
+ctrl-Vc ctrl-Vn insert char c literally, decimal value n
+ctrl-A          insert previously inserted text
+ctrl-W          delete word before cursor
+ctrl-U          delete all inserted character in current line
+ctrl-D ctrl-T   shift left, right one shift width
+ctrl-X + ctrl-E scroll up
+crtl-x + ctrl-Y scroll down
+esc or ctrl+[   abandon edition then command mode
+------------------------------------------------------------------
+### COPYING
+------------------------------------------------------------------
+"x              use register x for next delete,yank,put
+:reg x[return]  show the content of all registers
+ym              yank the text of movement command m
+yy or Y         yank current line into register
+p P             put register after, before cursor position
+]p [p           like p, P with indent adjusted
+gp gP           like p, P leaving cursor after new text
+------------------------------------------------------------------
+### ADVANCED INSERTION 
+------------------------------------------------------------------
+g?m             perform rot13 encoding on movement m
+n then ctrl+A   +n to number under cursor
+n then ctrl+X   -n to number under cursor
+gqm             format lines of movement m to fixed
+------------------------------------------------------------------
+
+
+        _             _           
+       | |           (_)          
+  _ __ | |_   _  __ _ _ _ __  ___ 
+ | '_ \| | | | |/ _` | | '_ \/ __|
+ | |_) | | |_| | (_| | | | | \__ \
+ | .__/|_|\__,_|\__, |_|_| |_|___/
+ | |  PLUGINS    __/ |            
+ |_|            |___/             
+
+
+------------------------------------------------------------------
+### FOLDING
+------------------------------------------------------------------
+zi              Fold/Unfold all
+zc              Close Fold all
+------------------------------------------------------------------
+### NERDTREE
+------------------------------------------------------------------
+ctrl+N          open, close
+------------------------------------------------------------------
+### EMMET 
+------------------------------------------------------------------
+ctrl+y,         open, close
+------------------------------------------------------------------
+### CTRLP 
+------------------------------------------------------------------
+ctrl+f          open, close
+ctrl_v          Split Horizontal
+ctrl+x          Split Vertical        
