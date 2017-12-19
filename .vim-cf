@@ -1,5 +1,7 @@
 set number relativenumber
 set runtimepath+=~/.vim_runtime
+set fillchars+=vert:\
+set foldlevelstart=1
 
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim
@@ -36,6 +38,8 @@ Plug 'tpope/vim-fugitive'
 " AutoComplete plugin system
 Plug 'Shougo/neocomplcache'
 " Initialize plugin system
+Plug 'zuhdil/vim-alder'
+
 call plug#end()
 
 " NerdTree
@@ -45,7 +49,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Emmet
 let g:user_emmet_leader_key='<C-Z>'
 "only enable normal mode functions.
-let g:user_emmet_mode='n'    
+let g:user_emmet_mode='n'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -62,7 +66,7 @@ let g:neocomplcache_enable_smart_case = 1
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return neocomplcache#smart_close_popup() . "\<CR>"
-  " For no inserting <CR> key.
+  "For no inserting <CR> key.
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
@@ -75,7 +79,20 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
+" CTRLP Config
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+            \ 'dir':'\v[\/]\.(git|hg|svn|bzr|storage)$',
+            \ 'file': '\v\.(exe|so|dll|jpg)$',
+            \ }
+let g:ctrlp_open_new_file = 'h'
+set splitright
 
+"Cheatseat
+nmap vs :vsp ~/cheatseat/vim-cheat<CR>
+nmap tc :vsp ~/cheatseat/tmux-cheat<CR>
+
+" Custom Configuration
 try
 source ~/.vim_runtime/my_configs.vim
 catch
