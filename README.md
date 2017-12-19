@@ -12,6 +12,9 @@ This will only valid for vim configuration, which is copy the config to .vimrc, 
 	
 	cp ~/.vim_runtime/vim-cf ~/.config/nvim/init.vim
 
+## Show Shortcut
+    more information: vs [vim-shortcut], tc [tmux-cheat]
+
 ## How to update to latest version?
 
     cd ~/.vim_runtime
