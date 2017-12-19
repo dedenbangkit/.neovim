@@ -1,4 +1,4 @@
-![VIM](https://jcgerhard.net/user/pages/01.blog/vim-cheats/item.svg)
+![VIM](http://ajhager.com/images/ElmVim.png)
 
 ## Thanks to AMIX
 This repository is originaly forked from https://github.com/amix/vimrc with some custom modifications.
