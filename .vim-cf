@@ -1,6 +1,7 @@
+
 set number relativenumber
 set runtimepath+=~/.vim_runtime
-set fillchars+=vert:\
+set fillchars+=vert:\ 
 set foldlevelstart=1
 
 source ~/.vim_runtime/vimrcs/basic.vim
@@ -39,6 +40,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'Shougo/neocomplcache'
 " Initialize plugin system
 Plug 'zuhdil/vim-alder'
+" JSBeautify
+Plug 'maksimr/vim-jsbeautify'
 
 call plug#end()
 
@@ -49,7 +52,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Emmet
 let g:user_emmet_leader_key='<C-Z>'
 "only enable normal mode functions.
-let g:user_emmet_mode='n'
+let g:user_emmet_mode='n'    
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -80,17 +83,49 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
 " CTRLP Config
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     
 let g:ctrlp_custom_ignore = {
             \ 'dir':'\v[\/]\.(git|hg|svn|bzr|storage)$',
             \ 'file': '\v\.(exe|so|dll|jpg)$',
             \ }
-let g:ctrlp_open_new_file = 'h'
+let g:ctrlp_user_command={
+            \ 'types':{
+            \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+            \ },
+        \'fallback': 'find %s -type f'
+        \}
+let g:ctrlp_open_new_file='h'
+let g:ctrlp_match_window='max:30'
+let g:ctrlp_clear_cache_on_exit=0
 set splitright
 
 "Cheatseat
 nmap vs :vsp ~/.vim_runtime/cheatseat/vim-cheat<CR>
 nmap tc :vsp ~/.vim_runtime/cheatseat/tmux-cheat<CR>
+
+" TinyMode
+nmap <C-W>+ <C-W>+<SID>ws 
+nmap <C-W>- <C-W>-<SID>ws 
+nn <script><SID>ws+ <C-W>+<SID>ws 
+nn <script><SID>ws- <C-W>-<SID>ws 
+nmap <SID>ws <Nop>
+
+" Tidy
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+
+" Non-Ribet Mode
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+
+" JsBeautify
+autocmd FileType javascript nmap vb :call JsBeautify()<CR>
+autocmd FileType json       nmap vb :call JsonBeautify()<CR>
+autocmd FileType jsx        nmap vb :call JsxBeautify()<CR>
+autocmd FileType html       nmap vb :call HtmlBeautify()<CR>
+autocmd FileType css        nmap vb :call CSSBeautify()<CR>
+
+" Tab Manager
+nmap tt :tabnext<CR>
 
 " Custom Configuration
 try
