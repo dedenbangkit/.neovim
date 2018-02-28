@@ -129,20 +129,25 @@ endif
 hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
 
 "Cheatseat nmap - normal | imap - insert | vmap - visual and select | smap - select | xmap - visual | cmap - command-line | omap - operator
-nmap vs :vsp ~/.vim_runtime/cheatseat/vim-cheat<CR>
-nmap tc :vsp ~/.vim_runtime/cheatseat/tmux-cheat<CR>
+nmap vs :vsp ~/.vim_runtime/cheatseat / vim-cheat <CR>
+nmap tc :vsp ~/.vim_runtime/cheatseat / tmux-cheat <CR>
 nmap vim :vsp ~/.vimrc<CR>
-nmap we :wq!<CR>
-nmap jf :w!<CR>
-nmap asdf :q<CR>
-nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
-nmap tt :tabnext<CR>
-nmap wh <C-w>h
-nmap wj <C-w>j
-nmap wk <C-w>k
-nmap wl <C-w>l
+nmap we :wq! <CR>
+nmap jf :w! <CR>
+nmap asdf :q <CR>
+nnoremap <silent> <Esc> <Esc> <Esc>: nohlsearch <CR> <Esc>
+nmap tt :tabnext <CR>
+nmap TT :tabprev <CR>
+nmap th :tabfirst <CR>
+nmap tl :tablast <CR>
+nmap tn :tabnew <CR>
+nmap wh <C-w> h
+nmap wj <C-w> j
+nmap wk <C-w> k
+nmap wl <C-w> l
 nmap ff <C-f>
-nmap lkj :vertical resize 150<CR>
+nmap fj :CtrlPBuffer <CR>
+nmap lkj :vertical resize 150 <CR>
 vmap <C-c> "+y
 nmap <C-p> "*p
 
