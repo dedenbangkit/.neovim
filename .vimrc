@@ -1,39 +1,3 @@
-
-# Thanks to AMIX
----------------
-This repository is originaly forked from https://github.com/amix/vimrc with some custom modifications.
-
-![VIM](http://ajhager.com/images/ElmVim.png)
-
-## Installation.
-```bash
-	$ git clone --depth=1 https://github.com/dedenbangkit/vim-cfg.git ~/.vim_runtime
-	$ sh ~/.vim_runtime/install.sh
-```
-This will only valid for vim configuration, which is copy the config to .vimrc, if you have neovim, you need to doing this:
-```bash	
-	$ cp ~/.vim_runtime/vim-cf ~/.config/nvim/init.vim
-```
-## Show Shortcut
-```bash
-    $ more information: vs [vim-shortcut], tc [tmux-cheat]
-```
-## Update to latest version?
-```bash
-    $ cd ~/.vim_runtime
-    $ git pull --rebase
-```
-## Uninstalling
-
-Just do following:
-* Remove `~/.vim_runtime`
-* Remove any lines that reference `.vim_runtime` in your `~/.vimrc`
-
-
-# Custom Keybind
---------------------
-## Basic Setup
-```
 set number relativenumber
 set runtimepath+=~/.vim_runtime
 set fillchars+=vert:\ 
@@ -41,20 +5,72 @@ set foldlevelstart=1
 set background=dark
 let g:go_version_warning = 0
 " set noeb vb t_vb=
-```
-## Plugins Keys
 
-### Vim Commenter
-```
-filetype plugin on
-```
-### Canoline
-```
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+source ~/.vim_runtime/vimrcs/plug.vim
+source ~/.vim_runtime/plugged/awesome-vim-colorschemes/colors/parsec.vim
+
+
+" source ~/.vim_runtime/themes/darkspectrum.vim
+
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim_runtime/plugged')
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Multiple Plug commands can be written in a single line using | separators Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" On-demand loading
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plugin Scala
+Plug 'derekwyatt/vim-scala'
+" Emmet
+Plug 'mattn/emmet-vim'
+" GitHub Plugin
+Plug 'airblade/vim-gitgutter'
+" Initialize plugin system
+Plug 'tpope/vim-fugitive'
+" AutoComplete plugin system
+Plug 'Shougo/neocomplcache'
+" Initialize plugin system
+" Plug 'zuhdil/vim-alder'
+" JSBeautify
+Plug 'maksimr/vim-jsbeautify'
+" CTRLSpace
+" Plug 'vim-ctrlspace/vim-ctrlspace'
+" Laravel Plugin
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-projectionist'
+Plug 'noahfrederick/vim-composer'
+Plug 'noahfrederick/vim-laravel'
+Plug 'jalvesaq/Nvim-R'
+" Multiple Cursor
+Plug 'terryma/vim-multiple-cursors'
+Plug 'miyakogi/conoline.vim'
+" All Themes
+Plug 'rafi/awesome-vim-colorschemes'
+" Renamer
+Plug 'wojtekmach/vim-rename'
+
+" Canoline
 let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd'
 let g:conoline_color_insert_dark = 'guibg=black guifg=white'
-```
-### Multiple Cursor 
-```
+
+" Multiple Cursor   
 let g:multi_cursor_start_word_key      = '<C-h>'
 let g:multi_cursor_select_all_word_key = '<A-n>'
 let g:multi_cursor_start_key           = 'g<C-h>'
@@ -65,32 +81,27 @@ let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 call plug#end()
-```
-### NerdTree
-```
+
+" NerdTree
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<CR>
-```
-### Emmet
-```
+
+" Emmet
 let g:user_emmet_leader_key='<C-Z>'
 "only enable normal mode functions.
 let g:user_emmet_mode='n'    
-```
-### Start interactive EasyAlign in visual mode (e.g. vipga)
-```
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-```
-### Start gitGutter
-```
+
+" Start gitGutter
 let g:gitgutter_max_signs = 500  " default value
-```
-### Autocomplete Config
-```
+
+" Autocomplete Config 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_smart_case = 1
@@ -116,15 +127,14 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
 inoremap <expr> <C-l> ("\<C-y>")
-```
-### UltiSnips
-```
+
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-```
-### CTRLP Config
-```
+
+
+" CTRLP Config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*,*/node_modules/*     
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|storage\|vendor\|log\|tmp$',
@@ -141,17 +151,15 @@ let g:ctrlp_open_new_file='h'
 let g:ctrlp_match_window='max:30'
 let g:ctrlp_clear_cache_on_exit=0
 set splitright
-```
-### CTRLSPACE Config
-```
+
+" CTRLSPACE Config
 " if has("gui_running")
 "   Settings for MacVim and Inconsolata font
 "   let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
 "endif
 " hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
-```
-## Key Mapping
-```
+
+"Cheatseat nmap - normal | imap - insert | vmap - visual and select | smap - select | xmap - visual | cmap - command-line | omap - operator
 nmap vs :vsp ~/.vim_runtime/cheatseat / vim-cheat <CR>
 nmap tc :vsp ~/.vim_runtime/cheatseat / tmux-cheat <CR>
 nmap vim :vsp ~/.config/nvim/init.vim<CR>
@@ -179,31 +187,35 @@ nmap <C-p> "*p
 vmap <C-c> :w !pbcopy<CR><CR>
 vnoremap ff y<ESC>/<c-r>"<CR>
 vnoremap rr "hy:%s/<C-r>h//gc<left><left><left>
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
-```
 
-### Laravel Find File
-```
+" Vim Commenter
+filetype plugin on
+
+" Laravel Find File
 if(file_readable("artisan"))
     nmap lr :e routes/web.php<cr>
     nmap lca :e config/app.php<cr>
     nmap lc :e composer.json<cr>
     nmap len :e .env<cr>
 endif
-```
 
-### Tidy Config
-```
+" Python Custom
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+
+" Tidy Config
 let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
 let g:syntastic_php_checkers = ['php']
-```
-### Beautify Config
-```
+
+" Beautify Config
 autocmd FileType javascript nmap vb :call JsBeautify()<CR>
 autocmd FileType json       nmap vb :call JsonBeautify()<CR>
 autocmd FileType jsx        nmap vb :call JsxBeautify()<CR>
 autocmd FileType html       nmap vb :call HtmlBeautify()<CR>
 autocmd FileType css        nmap vb :call CSSBeautify()<CR>
-```
 
+" Custom Configuration
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
