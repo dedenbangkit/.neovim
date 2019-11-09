@@ -65,6 +65,16 @@ Plug 'miyakogi/conoline.vim'
 Plug 'rafi/awesome-vim-colorschemes'
 " Renamer
 Plug 'wojtekmach/vim-rename'
+" Translate
+Plug 'VincentCordobes/vim-translate'
+" In Between Word
+Plug 'tpope/vim-surround'
+" Vim React Preffy
+Plug 'maxmellon/vim-jsx-pretty'
+" Vim react template
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
+Plug 'qpkorr/vim-renamer'
 
 " Canoline
 let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd'
@@ -160,14 +170,13 @@ set splitright
 " hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
 
 "Cheatseat nmap - normal | imap - insert | vmap - visual and select | smap - select | xmap - visual | cmap - command-line | omap - operator
-nmap vs :vsp ~/.vim_runtime/cheatseat / vim-cheat <CR>
-nmap tc :vsp ~/.vim_runtime/cheatseat / tmux-cheat <CR>
 nmap vim :vsp ~/.config/nvim/init.vim<CR>
+nmap vom :source ~/.config/nvim/init.vim<CR>
 nmap we :wq! <CR>
 nmap ca :!php artisan cache:clear<CR>
 nmap xit :q! <CR>
 nmap jf :w! <CR>
-nmap npm :!npm run start <CR>
+nmap yarn :!yarn start <CR>
 nmap asdf :vertical resize 100 <CR>
 nnoremap <silent> <Esc> <Esc> <Esc>: nohlsearch <CR> <Esc>
 nmap tt :tabnext <CR>
@@ -185,8 +194,15 @@ nmap fj :CtrlPBuffer <CR>
 nmap lkj :vertical resize 150 <CR>
 nmap <C-p> "*p
 vmap <C-c> :w !pbcopy<CR><CR>
+xnoremap K  :m-2<CR>gv=gv
+xnoremap J :m'>+<CR>gv=gv
 vnoremap ff y<ESC>/<c-r>"<CR>
 vnoremap rr "hy:%s/<C-r>h//gc<left><left><left>
+
+" Snippets
+nmap fire i🔥 🔥 🔥<Esc>
+nmap { ysiw{
+nmap [ ysiw[
 
 " Vim Commenter
 filetype plugin on
@@ -206,6 +222,15 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
 let g:syntastic_php_checkers = ['php']
+
+" Translate
+let g:translate#default_languages = {
+      \ 'id': 'en',
+      \ 'en': 'id'
+      \ }
+
+nmap <F2> :Translate<CR>
+vmap <F2> :TranslateVisual<CR>
 
 " Beautify Config
 autocmd FileType javascript nmap vb :call JsBeautify()<CR>
