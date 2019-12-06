@@ -2,14 +2,19 @@ set number relativenumber
 set runtimepath+=~/.vim_runtime
 set fillchars+=vert:\ 
 set foldlevelstart=1
-set noeb vb t_vb=
+set background=dark
+let g:go_version_warning = 0
+" set noeb vb t_vb=
 
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim
 source ~/.vim_runtime/vimrcs/plugins_config.vim
-"source ~/.vim_runtime/vimrcs/extended.vim
+source ~/.vim_runtime/vimrcs/extended.vim
 source ~/.vim_runtime/vimrcs/plug.vim
-source ~/.vim_runtime/themes/darkspectrum.vim
+source ~/.vim_runtime/plugged/awesome-vim-colorschemes/colors/PaperColor.vim
+
+
+" source ~/.vim_runtime/themes/darkspectrum.vim
 
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim_runtime/plugged')
@@ -21,6 +26,7 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" On-demand loading
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -30,6 +36,8 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plugin Scala
+Plug 'derekwyatt/vim-scala'
 " Emmet
 Plug 'mattn/emmet-vim'
 " GitHub Plugin
@@ -39,23 +47,57 @@ Plug 'tpope/vim-fugitive'
 " AutoComplete plugin system
 Plug 'Shougo/neocomplcache'
 " Initialize plugin system
-Plug 'zuhdil/vim-alder'
+" Plug 'zuhdil/vim-alder'
 " JSBeautify
 Plug 'maksimr/vim-jsbeautify'
 " CTRLSpace
-Plug 'vim-ctrlspace/vim-ctrlspace'
+" Plug 'vim-ctrlspace/vim-ctrlspace'
 " Laravel Plugin
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist'
 Plug 'noahfrederick/vim-composer'
 Plug 'noahfrederick/vim-laravel'
+Plug 'jalvesaq/Nvim-R'
+" Multiple Cursor
+Plug 'terryma/vim-multiple-cursors'
+Plug 'miyakogi/conoline.vim'
+" All Themes
+Plug 'rafi/awesome-vim-colorschemes'
+" Renamer
+Plug 'wojtekmach/vim-rename'
+" Translate
+Plug 'VincentCordobes/vim-translate'
+" In Between Word
+Plug 'tpope/vim-surround'
+" Vim React Preffy
+Plug 'maxmellon/vim-jsx-pretty'
+" Vim react template
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
+" Vim Indenting PHP
+Plug '2072/PHP-Indenting-for-VIm'
+
+" Canoline
+let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd'
+let g:conoline_color_insert_dark = 'guibg=black guifg=white'
+
+" Multiple Cursor   
+let g:multi_cursor_start_word_key      = '<C-h>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-h>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
 
 call plug#end()
 
 " NerdTree
 let g:NERDTreeWinPos = "left"
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 map <C-n> :NERDTreeToggle<CR>
-map nn :NERDTreeToggle<CR>
 
 " Emmet
 let g:user_emmet_leader_key='<C-Z>'
@@ -69,6 +111,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Start gitGutter
 let g:gitgutter_max_signs = 500  " default value
+0
 
 " Autocomplete Config 
 let g:neocomplcache_enable_at_startup = 1
@@ -76,7 +119,7 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_smart_case = 1
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
+  return neocomplcache#smart_close_popup(). "\<CR>"
   "For no inserting <CR> key.
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
@@ -104,11 +147,11 @@ let g:UltiSnipsJumpForwardTrigger="<c-l>"
 
 
 " CTRLP Config
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*     
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*,*/node_modules/*     
 let g:ctrlp_custom_ignore = {
-            \ 'dir':'\v[\/]\.(git|hg|svn|bzr|storage|vendor)$',
-            \ 'file': '\v\.(exe|so|dll|jpg)$',
-            \ }
+  \ 'dir':  '\.git$\|\.yardoc\|\.node_modules\|storage\|vendor\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.jpg$|'
+  \ }
 let g:ctrlp_user_command={
             \ 'types':{
             \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
@@ -122,34 +165,51 @@ let g:ctrlp_clear_cache_on_exit=0
 set splitright
 
 " CTRLSPACE Config
-if has("gui_running")
-   Settings for MacVim and Inconsolata font
-   let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
-endif
-hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
+" if has("gui_running")
+"   Settings for MacVim and Inconsolata font
+"   let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
+"endif
+" hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
 
 "Cheatseat nmap - normal | imap - insert | vmap - visual and select | smap - select | xmap - visual | cmap - command-line | omap - operator
-nmap vs :vsp ~/.vim_runtime/cheatseat / vim-cheat <CR>
-nmap tc :vsp ~/.vim_runtime/cheatseat / tmux-cheat <CR>
-nmap vim :vsp ~/.vimrc<CR>
+nmap vim :vsp ~/.config/nvim/init.vim<CR>
+nmap vom :source ~/.config/nvim/init.vim<CR>
 nmap we :wq! <CR>
+nmap ca :!php artisan cache:clear<CR>
+nmap xit :q! <CR>
 nmap jf :w! <CR>
-nmap asdf :q <CR>
+nmap yarn :!yarn start <CR>
+nmap asdf :vertical resize 50 <CR>
 nnoremap <silent> <Esc> <Esc> <Esc>: nohlsearch <CR> <Esc>
 nmap tt :tabnext <CR>
 nmap TT :tabprev <CR>
 nmap th :tabfirst <CR>
 nmap tl :tablast <CR>
 nmap tn :tabnew <CR>
-nmap wh <C-w> h
-nmap wj <C-w> j
-nmap wk <C-w> k
-nmap wl <C-w> l
+nmap wh <C-w>h
+nmap wj <C-w>j
+nmap wk <C-w>k
+nmap wl <C-w>l
 nmap ff <C-f>
+nmap ee $
+nmap yy yyp
+nmap ups gUU
 nmap fj :CtrlPBuffer <CR>
 nmap lkj :vertical resize 150 <CR>
-vmap <C-c> "+y
 nmap <C-p> "*p
+vmap <C-c> :w !pbcopy<CR><CR>
+xnoremap K  :m-2<CR>gv=gv
+xnoremap J :m'>+<CR>gv=gv
+vnoremap ff y<ESC>/<c-r>"<CR>
+vnoremap rr "hy:%s/<C-r>h//gc<left><left><left>
+
+" Snippets
+nmap fire i🔥 🔥 🔥<Esc>
+nmap { ysiw{
+nmap [ ysiw[
+
+" Vim Commenter
+filetype plugin on
 
 " Laravel Find File
 if(file_readable("artisan"))
@@ -159,11 +219,24 @@ if(file_readable("artisan"))
     nmap len :e .env<cr>
 endif
 
+" Python Custom
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
 " Tidy Config
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+let g:syntastic_php_checkers = ['php']
 
-" JsBeautify Config
+" Translate
+let g:translate#default_languages = {
+      \ 'id': 'en',
+      \ 'en': 'id'
+      \ }
+
+nmap <F2> :Translate<CR>
+vmap <F2> :TranslateVisual<CR>
+
+" Beautify Config
 autocmd FileType javascript nmap vb :call JsBeautify()<CR>
 autocmd FileType json       nmap vb :call JsonBeautify()<CR>
 autocmd FileType jsx        nmap vb :call JsxBeautify()<CR>
