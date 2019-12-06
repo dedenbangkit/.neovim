@@ -11,7 +11,7 @@ source ~/.vim_runtime/vimrcs/filetypes.vim
 source ~/.vim_runtime/vimrcs/plugins_config.vim
 source ~/.vim_runtime/vimrcs/extended.vim
 source ~/.vim_runtime/vimrcs/plug.vim
-source ~/.vim_runtime/plugged/awesome-vim-colorschemes/colors/parsec.vim
+source ~/.vim_runtime/plugged/awesome-vim-colorschemes/colors/PaperColor.vim
 
 
 " source ~/.vim_runtime/themes/darkspectrum.vim
@@ -74,7 +74,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Vim react template
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
-Plug 'qpkorr/vim-renamer'
+" Vim Indenting PHP
+Plug '2072/PHP-Indenting-for-VIm'
 
 " Canoline
 let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd'
@@ -110,6 +111,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Start gitGutter
 let g:gitgutter_max_signs = 500  " default value
+0
 
 " Autocomplete Config 
 let g:neocomplcache_enable_at_startup = 1
@@ -117,7 +119,7 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_smart_case = 1
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
+  return neocomplcache#smart_close_popup(). "\<CR>"
   "For no inserting <CR> key.
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
@@ -147,7 +149,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-l>"
 " CTRLP Config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*,*/node_modules/*     
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|storage\|vendor\|log\|tmp$',
+  \ 'dir':  '\.git$\|\.yardoc\|\.node_modules\|storage\|vendor\|log\|tmp$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.jpg$|'
   \ }
 let g:ctrlp_user_command={
@@ -177,7 +179,7 @@ nmap ca :!php artisan cache:clear<CR>
 nmap xit :q! <CR>
 nmap jf :w! <CR>
 nmap yarn :!yarn start <CR>
-nmap asdf :vertical resize 100 <CR>
+nmap asdf :vertical resize 50 <CR>
 nnoremap <silent> <Esc> <Esc> <Esc>: nohlsearch <CR> <Esc>
 nmap tt :tabnext <CR>
 nmap TT :tabprev <CR>
@@ -189,7 +191,9 @@ nmap wj <C-w>j
 nmap wk <C-w>k
 nmap wl <C-w>l
 nmap ff <C-f>
-nmap ups :gUU
+nmap ee $
+nmap yy yyp
+nmap ups gUU
 nmap fj :CtrlPBuffer <CR>
 nmap lkj :vertical resize 150 <CR>
 nmap <C-p> "*p
