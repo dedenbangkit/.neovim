@@ -1,4 +1,5 @@
 set number relativenumber
+set list
 set runtimepath+=~/.vim_runtime
 set fillchars+=vert:\ 
 set foldlevelstart=1
@@ -25,7 +26,8 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " Multiple Plug commands can be written in a single line using | separators Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 " On-demand loading
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Using a non-master branch
@@ -76,6 +78,15 @@ Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 " Vim Indenting PHP
 Plug '2072/PHP-Indenting-for-VIm'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Vim Svelte
+Plug 'evanleck/vim-svelte'
+" Vim Cargo Rust
+Plug 'rust-lang/rust.vim'
+" Vim Ferret Search ACK
+Plug 'wincent/ferret'
+" WIndow Interactive
+Plug 'romgrk/winteract.vim'
 
 " Canoline
 let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd'
@@ -164,6 +175,11 @@ let g:ctrlp_match_window='max:30'
 let g:ctrlp_clear_cache_on_exit=0
 set splitright
 
+" Prettier Config
+let g:prettier#autoformat = 1
+let g:prettier#config#tab_width = 'auto'
+let g:prettier#config#html_whitespace_sensitivity = 'css'
+
 " CTRLSPACE Config
 " if has("gui_running")
 "   Settings for MacVim and Inconsolata font
@@ -174,9 +190,7 @@ set splitright
 "Cheatseat nmap - normal | imap - insert | vmap - visual and select | smap - select | xmap - visual | cmap - command-line | omap - operator
 nmap vim :vsp ~/.config/nvim/init.vim<CR>
 nmap vom :source ~/.config/nvim/init.vim<CR>
-nmap we :wq! <CR>
 nmap ca :!php artisan cache:clear<CR>
-nmap xit :q! <CR>
 nmap jf :w! <CR>
 nmap yarn :!yarn start <CR>
 nmap asdf :vertical resize 50 <CR>
@@ -190,12 +204,16 @@ nmap wh <C-w>h
 nmap wj <C-w>j
 nmap wk <C-w>k
 nmap wl <C-w>l
+nmap gw :InteractiveWindow<CR>
 nmap ff <C-f>
+nmap fff :Ack 
 nmap ee $
 nmap yy yyp
 nmap ups gUU
 nmap fj :CtrlPBuffer <CR>
 nmap lkj :vertical resize 150 <CR>
+nmap vv :Prettier<CR>
+nmap co /console<CR>
 nmap <C-p> "*p
 vmap <C-c> :w !pbcopy<CR><CR>
 xnoremap K  :m-2<CR>gv=gv
