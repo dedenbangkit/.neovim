@@ -1,4 +1,4 @@
-![VIM](https://islascruz.org/blog/wp-content/uploads/2017/01/26-vim-vs-emacs-745x1024.png.webp)
+![cover](https://user-images.githubusercontent.com/3245109/93150872-7f02e180-f724-11ea-963e-4fccf1be7f80.png)
 
 ## Installation.
 ```bash
