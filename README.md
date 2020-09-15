@@ -1,9 +1,4 @@
-
-# Thanks to AMIX
----------------
-This repository is originaly forked from https://github.com/amix/vimrc with some custom modifications.
-
-![VIM](http://ajhager.com/images/ElmVim.png)
+![VIM](https://islascruz.org/blog/wp-content/uploads/2017/01/26-vim-vs-emacs-745x1024.png.webp)
 
 ## Installation.
 ```bash
