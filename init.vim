@@ -247,7 +247,6 @@ autocmd FileType html,css EmmetInstall
 " Whitespaces
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
-nmap sp :!php artisan cache:clear<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -431,7 +430,6 @@ nmap vim :vsp ~/.config/nvim/init.vim<CR>
 nmap vam :source ~/.config/nvim/init.vim<CR>
 " ctags
 nmap go <C-]>
-nmap ca :!php artisan cache:clear<CR>
 nmap jf :w! <CR>
 nmap yarn :!yarn start <CR>
 nmap <A-w> :InteractiveWindow<CR>
@@ -522,14 +520,6 @@ nmap [ ysiw[
 
 " Vim Commenter
 filetype plugin on
-
-" Laravel Find File
-if(file_readable("artisan"))
-    nmap lr :e routes/web.php<cr>
-    nmap lca :e config/app.php<cr>
-    nmap lc :e composer.json<cr>
-    nmap len :e .env<cr>
-endif
 
 " Python Custom
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
