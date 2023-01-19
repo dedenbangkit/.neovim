@@ -1,8 +1,8 @@
-![cover](https://user-images.githubusercontent.com/3245109/93150872-7f02e180-f724-11ea-963e-4fccf1be7f80.png)
+# MOVED TO : [dedenbangkit/.emacs.d](https://github.com/dedenbangkit/.emacs.d)
 
 ## Installation.
 ```bash
-$ git clone --depth=1 https://github.com/dedenbangkit/vim-cfg.git ~/.vim_runtime
+$ git clone --depth=1 https://github.com/dedenbangkit/.neovim.git ~/.vim_runtime
 $ sh ~/.vim_runtime/install.sh
 ```
 ## Update to latest version?
@@ -404,82 +404,3 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 ```
-
-## List of Plugins
-
-- https://github.com/junegunn/vim-easy-align
-- https://github.com/SirVer/ultisnips
-- https://github.com/epilande/vim-es2015-snippets
-- https://github.com/epilande/vim-react-snippets
-- https://github.com/scrooloose/nerdtree
-- https://github.com/tpope/vim-fireplace
-- https://github.com/rdnetto/YCM-Generator
-- https://github.com/fatih/vim-go
-- https://github.com/nsf/gocode
-- https://github.com/junegunn/fzf
-- https://github.com/mattn/emmet-vim
-- https://github.com/airblade/vim-gitgutter
-- https://github.com/tpope/vim-fugitive
-- https://github.com/Shougo/vimproc.vim
-- https://github.com/yuezk/vim-js
-- https://github.com/tpope/vim-dispatch
-- https://github.com/tpope/vim-projectionist
-- https://github.com/noahfrederick/vim-composer
-- https://github.com/noahfrederick/vim-laravel
-- https://github.com/jalvesaq/Nvim-R
-- https://github.com/iamcco/markdown-preview.nvim
-- https://github.com/terryma/vim-multiple-cursors
-- https://github.com/miyakogi/conoline.vim
-- https://github.com/rafi/awesome-vim-colorschemes
-- https://github.com/NLKNguyen/papercolor-theme
-- https://github.com/wojtekmach/vim-rename
-- https://github.com/VincentCordobes/vim-translate
-- https://github.com/tpope/vim-surround
-- https://github.com/maxmellon/vim-jsx-pretty
-- https://github.com/2072/PHP-Indenting-for-VIm
-- https://github.com/prettier/vim-prettier
-- https://github.com/sbdchd/neoformat
-- https://github.com/wincent/ferret
-- https://github.com/romgrk/winteract.vim
-- https://github.com/leafgarland/typescript-vim
-- https://github.com/shawncplus/phpcomplete.vim
-- https://github.com/chrisbra/vim-xml-runtime
-- https://github.com/pechorin/any-jump.vim
-- https://github.com/mhartington/oceanic-next
-- https://github.com/maksimr/vim-jsbeautify
-- https://github.com/jiangmiao/auto-pairs
-- https://github.com/easymotion/vim-easymotion
-- https://github.com/haya14busa/incsearch.vim
-- https://github.com/haya14busa/incsearch-fuzzy.vim
-- https://github.com/haya14busa/incsearch-easymotion.vim
-- https://github.com/metakirby5/codi.vim
-- https://github.com/ntpeters/vim-better-whitespace
-- https://github.com/Shougo/deoplete.nvim
-- https://github.com/lighttiger2505/deoplete-vim-lsp
-- https://github.com/roxma/nvim-yarp
-- https://github.com/roxma/vim-hug-neovim-rpc
-- https://github.com/prabirshrestha/vim-lsp
-- https://github.com/mattn/vim-lsp-settings
-- https://github.com/Shougo/neosnippet.vim
-- https://github.com/Shougo/neosnippet-snippets
-- https://github.com/neoclide/coc.nvim
-- https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
-- https://github.com/jidn/vim-dbml
-- https://github.com/ryanoasis/vim-devicons
-- https://github.com/powerline/powerline
-- https://github.com/vim-airline/vim-airline
-- https://github.com/vim-airline/vim-airline-themes
-- https://github.com/rust-lang/rust.vim
-- https://github.com/Olical/conjure
-- https://github.com/dense-analysis/ale
-- https://github.com/radenling/vim-dispatch-neovim
-- https://github.com/jceb/vim-orgmode
-- https://github.com/guns/vim-clojure-static
-- https://github.com/guns/vim-clojure-highlight
-- https://github.com/tpope/vim-salve
-- https://github.com/christoomey/vim-tmux-runner
-- https://github.com/joereynolds/SQHell.vim
-- https://github.com/jpalardy/vim-slime
-- https://github.com/hanschen/vim-ipython-cell
-- https://github.com/vim-syntastic/syntastic
-- https://github.com/puremourning/vimspector
